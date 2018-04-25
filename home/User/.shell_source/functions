@@ -1,3 +1,20 @@
+##### histrory search with help tag ###################
+##example :
+# $user: vim /etc/apt/source.list #tag-vim_source-list
+# $user: hi vim
+
+hi() {
+        history | grep --color=always "tag-$1" |grep -v 'grep' |grep -v 'hi' |grep -v 'hh' |grep -v 'history' |tail -n25
+}
+
+##### history search all history and show 50 last ###########
+
+hh() {
+        history | grep --color=always -i "$1" |grep -v 'grep' |grep -v 'hi' |grep -v 'hh' |grep -v 'history' |tail -n50
+}
+
+############### off/on history log ###############
+
 incognito() {
   case $1 in
     start)
@@ -9,6 +26,8 @@ incognito() {
        incognito stop  - enable command history.";;
   esac
 }
+
+############## unzip untar and other ##############
 
 extract () {
   if [ -f $1 ] ; then
@@ -31,7 +50,8 @@ extract () {
   fi
 }
 
-.
+### crete zip and tar
+
 function maketar() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }         # Creates an archive (*.tar.gz) from given directory
 function makezip() { zip -r "${1%%/}.zip" "$1" ; }                    # Create a ZIP archive of a file or folder.
 
