@@ -30,8 +30,13 @@ if [ -x "`which inxi 2>&1`" ]; then
     inxi -IpRS -v0 -c5
 fi
 
+# keychain saved your ssh activity, after reboot need one enter password (need install keychain) 
 eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/keys/1_id $HOME/.ssh/keys/05_id $HOME/.ssh/keys/123_id)
 source $HOME/.keychain/$HOSTNAME-sh
+
+#use ssh ident insted keychain (need install ssh-ident)
+#alias ssh="/usr/bin/ssh-ident"
+
 
 #comment ------------------------------
 #if [[ $- != *i* ]] ; then
